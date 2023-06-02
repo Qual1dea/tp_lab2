@@ -1,0 +1,16 @@
+﻿@model Laba_2.Models.Person
+
+@{
+    ViewBag.Title = "CreatePerson";
+}
+
+<h2>Заказ:</h2>
+
+@using (Html.BeginForm("View_Data", "Database", FormMethod.Post))
+{
+    @Html.LabelForModel()
+    @Html.EditorForModel()
+    <button type="submit">Сохранить заказ</button>
+}
+
+    

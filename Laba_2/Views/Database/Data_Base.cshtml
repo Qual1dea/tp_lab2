@@ -1,0 +1,51 @@
+﻿@model List<Laba_2.Models.Person>
+@using Laba_2.external_method
+
+@{
+
+    ViewBag.Title = "База Данных";
+}
+
+@helper ListArray(List<Laba_2.Models.Person> Model)
+{
+    foreach (var person in Model)
+    {
+        <tr>
+            <td>@person.PersonId</td>
+            <td>@person.Name</td>
+            <td>@person.Order</td>
+            <td>@person.Quantity</td>
+            <td>@person.BirthDate</td>
+            <td>@person.Phone</td>
+            <td>@person.Adress</td>
+            <td>@person.Details</td>
+        </tr>
+    }
+}
+
+<h2>База Данных</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя Фамили</th>
+            <th>Заказ</th>
+            <th>Количество</th>
+            <th>Дата рождения</th>
+            <th>Телефон</th>
+            <th>Адрес</th>
+            <th>Детали</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if ((bool)ViewData["method"])
+        {
+            @Html.ListArrayItems(Model)
+        }
+        else
+        {
+            @ListArray(Model);
+        }
+    </tbody>
+</table>
+<p class="hyperlink">@Html.ActionLink("Сохранить заказ", "Creat_Data")</p>
